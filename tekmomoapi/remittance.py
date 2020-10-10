@@ -36,7 +36,7 @@ class TokenPost200ApplicationJsonResponse:
         self,
         access_token: Optional[str] = None,
         token_type: Optional[str] = None,
-        expires_in: Optional[str] = None,
+        expires_in: Optional[int] = None,
     ) -> None:
         """Initializes with the given values."""
         # A JWT token which can be used to authrize against the other API end-points. The format of the token follows the JWT standard format (see jwt.io for an example). This is the token that should be sent in in the Authorization header when calling the other API end-points.
@@ -101,7 +101,7 @@ def token_post200_application_json_response_from_obj(
 
     if "expires_in" in obj:
         expires_in_from_obj = from_obj(
-            obj["expires_in"], expected=[str], path=path + ".expires_in"
+            obj["expires_in"], expected=[int, str], path=path + ".expires_in"
         )  # type: Optional[str]
     else:
         expires_in_from_obj = None
