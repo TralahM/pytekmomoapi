@@ -522,17 +522,19 @@ class RemoteCaller:
         headers["Ocp-Apim-Subscription-Key"] = ocp_apim_subscription_key
 
         headers["X-Reference-Id"] = x_reference_id
+        headers["Content-Type"] = "application/json"
 
-        data = None  # type: Optional[Any]
+        # data = None  # type: Optional[Any]
         if api_user != None:
             data = to_jsonable(api_user, expected=[ApiUser])
+        else:
+            data = {"providerCallbackHost": "localhost"}
 
-        resp = requests.request(
-            method="post",
+        resp = requests.post(
             url=url,
             headers=headers,
-            json=data,
-            auth=self.auth,
+            data=str(data),
+            # auth=self.auth,
         )
 
         with contextlib.closing(resp):
@@ -550,7 +552,7 @@ class RemoteCaller:
 
         :return:
         """
-        url = self.url_prefix + "/v1_0/apiuser/{X-Reference-Id}/apikey"
+        url = self.url_prefix + f"/v1_0/apiuser/{x_reference_id}/apikey"
 
         headers = {}  # type: Dict[str, str]
 
@@ -578,7 +580,7 @@ class RemoteCaller:
 
         :return: Ok
         """
-        url = self.url_prefix + "/v1_0/apiuser/{X-Reference-Id}"
+        url = self.url_prefix + f"/v1_0/apiuser/{x_reference_id}"
 
         headers = {}  # type: Dict[str, str]
 
