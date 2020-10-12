@@ -101,7 +101,7 @@ def token_post200_application_json_response_from_obj(
 
     if "expires_in" in obj:
         expires_in_from_obj = from_obj(
-            obj["expires_in"], expected=[str], path=path + ".expires_in"
+            obj["expires_in"], expected=[int], path=path + ".expires_in"
         )  # type: Optional[str]
     else:
         expires_in_from_obj = None
@@ -260,8 +260,9 @@ def balance_from_obj(obj: Any, path: str = "") -> Balance:
 
     if "availableBalance" in obj:
         availableBalance_from_obj = from_obj(
-            obj["availableBalance"], expected=[
-                str], path=path + ".availableBalance"
+            obj["availableBalance"],
+            expected=[str],
+            path=path + ".availableBalance",
         )  # type: Optional[str]
     else:
         availableBalance_from_obj = None
@@ -1740,7 +1741,7 @@ def from_obj(obj: Any, expected: List[type], path: str = "") -> Any:
         )
 
     if exp in [bool, int, str, list, dict]:
-        if not isinstance(obj, exp):
+        if not isinstance(obj, exp) or not isinstance(obj, expected[-1]):
             raise ValueError(
                 "Expected object of type {} at {!r}, but got {}.".format(
                     exp, path, type(obj)

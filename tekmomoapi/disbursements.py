@@ -101,7 +101,7 @@ def token_post200_application_json_response_from_obj(
 
     if "expires_in" in obj:
         expires_in_from_obj = from_obj(
-            obj["expires_in"], expected=[str], path=path + ".expires_in"
+            obj["expires_in"], expected=[int, str], path=path + ".expires_in"
         )  # type: Optional[str]
     else:
         expires_in_from_obj = None
