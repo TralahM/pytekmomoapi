@@ -571,7 +571,7 @@ class RemoteCaller:
 
     def get_v1_0_apiuser(
         self, ocp_apim_subscription_key: str, x_reference_id: str
-    ) -> bytes:
+    ) -> dict:
         """
         Used to get API user information.
 
@@ -595,7 +595,7 @@ class RemoteCaller:
 
         with contextlib.closing(resp):
             resp.raise_for_status()
-            return resp.content
+            return json.loads(resp.content)
 
 
 def from_obj(obj: Any, expected: List[type], path: str = "") -> Any:
