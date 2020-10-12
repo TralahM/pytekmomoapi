@@ -32,13 +32,17 @@ __all__ = [
     "RemittanceAPI",
     "DisbursementAPI",
     "CollectionAPI",
-    "Party",
+    "DParty",
+    "RParty",
+    "CParty",
     "PaymentRequest",
     "DTransfer",
     "RTransfer",
-    "get_party_obj",
-    "get_remittance_transfer_obj",
+    "get_collection_party_obj",
+    "get_disbursement_party_obj",
+    "get_remittance_party_obj",
     "get_disbursement_transfer_obj",
+    "get_remittance_transfer_obj",
     "get_payment_request_obj",
 ]
 
@@ -61,6 +65,8 @@ def get_disbursement_party_obj(partyIdType: str, partyId: str):
         <br> partyId should explicitly be in small letters.
     """
     return DParty(partyIdType, partyId)
+
+
 def get_collection_party_obj(partyIdType: str, partyId: str):
     """Return a Party obj from *args and **kwargs.
 
@@ -239,6 +245,7 @@ class RemittanceAPI(BaseAPI):
     ):
         r"""
         Transfer operation is used to transfer an amount from the own account to a payee account.
+
         <br> Status of the transaction can validated by using the GET /transfer/\{referenceId\}
 
         :param x_reference_id: Format - UUID. Recource ID of the created request to pay transaction.
@@ -266,7 +273,8 @@ class RemittanceAPI(BaseAPI):
         x_target_environment="sandbox",
     ):
         """
-        This operation is used to get the status of a transfer.
+        Get This operation is used to get the status of a transfer.
+
         X-Reference-Id that was passed in the post is used as reference to the request.
 
         :param reference_id: UUID of transaction to get result.
@@ -301,6 +309,7 @@ class DisbursementAPI(BaseAPI):
     ):
         r"""
         Transfer operation is used to transfer an amount from the own account to a payee account.
+
         <br> Status of the transaction can validated by using the GET /transfer/\{referenceId\}
 
         :param x_reference_id: Format - UUID. Recource ID of the created request to pay transaction.
@@ -328,7 +337,8 @@ class DisbursementAPI(BaseAPI):
         x_target_environment="sandbox",
     ):
         """
-        This operation is used to get the status of a transfer.
+        Get This operation is used to get the status of a transfer.
+
         X-Reference-Id that was passed in the post is used as reference to the request.
 
         :param reference_id: UUID of transaction to get result.
@@ -362,7 +372,7 @@ class CollectionAPI(BaseAPI):
         x_target_environment="sandbox",
     ):
         r"""
-        This operation is used to request a payment from a consumer (Payer). The payer will be asked to authorize the payment. The transaction will be executed once the payer has authorized the payment. The requesttopay will be in status PENDING until the transaction is authorized or declined by the payer or it is timed out by the system.
+        Get This operation is used to request a payment from a consumer (Payer). The payer will be asked to authorize the payment. The transaction will be executed once the payer has authorized the payment. The requesttopay will be in status PENDING until the transaction is authorized or declined by the payer or it is timed out by the system.
 
          Status of the transaction can be validated by using the GET /requesttopay/\<resourceId\>
 
@@ -388,6 +398,7 @@ class CollectionAPI(BaseAPI):
         reference_id,
         x_target_environment="sandbox",
     ):
+        """Get Payment Request Status."""
         return self.remote_caller.requesttopay_referenceId_GET(
             self.subscription_key,
             reference_id=reference_id,
