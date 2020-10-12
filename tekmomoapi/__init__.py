@@ -1,5 +1,6 @@
 """Momo Developer APIs SDK."""
 import json
+from . import scaffold
 from .collection import RemoteCaller as CollectionAPI
 from .disbursements import RemoteCaller as DisbursementAPI
 from .remittance import RemoteCaller as RemittanceAPI
