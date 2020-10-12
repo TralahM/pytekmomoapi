@@ -125,3 +125,7 @@ tekmomo/*
 openapidescs/*
 *.csv
 test_credentials.yml
+classes.txt
+classmethods.txt
+remotecallers.txt
+results.txt
