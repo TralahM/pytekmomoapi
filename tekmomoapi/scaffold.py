@@ -48,31 +48,31 @@ __all__ = [
 
 
 def get_remittance_party_obj(partyIdType: str, partyId: str):
-    """Return a Party obj from *args and **kwargs.
+    """Return a Party obj from args and kwargs.
 
     :param partyIdType: Specifies the type of the party ID.
-        Allowed values [msisdn, email, party_code].
-        <br> partyId should explicitly be in small letters.
+        Allowed values [msisdn, email, party_code].<br>
+    :param partyId: Specifies the party ID, should explicitly be in small letters.
     """
     return RParty(partyIdType, partyId)
 
 
 def get_disbursement_party_obj(partyIdType: str, partyId: str):
-    """Return a Party obj from *args and **kwargs.
+    """Return a Party obj from args and kwargs.
 
     :param partyIdType: Specifies the type of the party ID.
-        Allowed values [msisdn, email, party_code].
-        <br> partyId should explicitly be in small letters.
+        Allowed values [msisdn, email, party_code].<br>
+    :param partyId: Specifies the party ID, should explicitly be in small letters.
     """
     return DParty(partyIdType, partyId)
 
 
 def get_collection_party_obj(partyIdType: str, partyId: str):
-    """Return a Party obj from *args and **kwargs.
+    """Return a Party obj from args and kwargs.
 
     :param partyIdType: Specifies the type of the party ID.
-        Allowed values [msisdn, email, party_code].
-        <br> partyId should explicitly be in small letters.
+        Allowed values [msisdn, email, party_code].<br>
+    :param partyId: Specifies the party ID, should explicitly be in small letters.
     """
     return CParty(partyIdType, partyId)
 
@@ -85,7 +85,15 @@ def get_remittance_transfer_obj(
     payerMessage: str,
     payeeNote: str,
 ):
-    """Return a Transfer obj from *args and **kwargs."""
+    """Return a Transfer obj from args and kwargs.
+
+    :param amount: Amount to Transfer,
+    :param currency: Currency Code,
+    :param externalId: External Identifier for the transaction,
+    :param payee: RParty(partyIdType,partyId),
+    :param payerMessage: payer Message,
+    :param payeeNote: payee Note,
+    """
     obj = locals()
     return RTransfer(**obj)
 
@@ -98,7 +106,15 @@ def get_disbursement_transfer_obj(
     payerMessage: str,
     payeeNote: str,
 ):
-    """Return a Transfer obj from *args and **kwargs."""
+    """Return a Transfer obj from args and kwargs.
+
+    :param amount: Amount to Transfer,
+    :param currency: Currency Code,
+    :param externalId: External Identifier for the transaction,
+    :param payee: DParty(partyIdType,partyId),
+    :param payerMessage: payer Message,
+    :param payeeNote: payee Note,
+    """
     obj = locals()
     return DTransfer(**obj)
 
@@ -111,7 +127,15 @@ def get_payment_request_obj(
     payerMessage: str,
     payeeNote: str,
 ):
-    """Return a PaymentRequest obj from *args and **kwargs."""
+    """Return a PaymentRequest obj from args and kwargs.
+
+    :param amount: Amount to Transfer,
+    :param currency: Currency Code,
+    :param externalId: External Identifier for the transaction,
+    :param payer: CParty(partyIdType,partyId),
+    :param payerMessage: payer Message,
+    :param payeeNote: payee Note,
+    """
     obj = locals()
     return request_to_pay_from_obj(obj)
 
@@ -119,7 +143,13 @@ def get_payment_request_obj(
 def get_sandbox_test_args(
     subscriptionKey: str, base_url: str = SANDBOX_BASE_URL
 ) -> dict:
-    """Return a key,value pair of user_id and apiKey."""
+    """Return some sandbox default sane test configuration values.
+
+    :param subscription_key: Your Subscription Key.
+    :param base_url: The sandbox base url default *https://sandbox.momodeveloper.mtn.com*.
+
+    :returns: a key,value pair of user_id,base_url,x_target_environment, apiKey,subscriptionKey."
+    """
     user_id = get_random_uuid_str()
     userpapi = UserProvisioning(url_prefix=base_url)
     userpapi.post_v1_0_apiuser(subscriptionKey, user_id)
@@ -154,7 +184,6 @@ class BaseAPI:
         @param url_prefix : base_url prefix for either sandbox or production,
         @param user_id : user uuid4 identifier,
         @param apiKey : user apiKey,
-        @param remote_caller_class : RemoteCaller Class for the respective API.
         """
         self.subscription_key = subscriptionKey
         self.url_prefix = base_url

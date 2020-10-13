@@ -25,7 +25,11 @@ SANDBOX_BASE_URL = "https://sandbox.momodeveloper.mtn.com"
 def get_user_id_and_api_key(
     subscriptionKey: str, base_url: str = SANDBOX_BASE_URL
 ) -> dict:
-    """Return a key,value pair of user_id and apiKey."""
+    """Return a key,value pair of user_id and apiKey.
+
+    :param subscription_key: Your Subscription Key.
+    :param base_url: The sandbox base url default *https://sandbox.momodeveloper.mtn.com*.
+    """
     user_id = get_random_uuid_str()
     userpapi = UserProvisioningAPI(url_prefix=base_url)
     userpapi.post_v1_0_apiuser(subscriptionKey, user_id)
