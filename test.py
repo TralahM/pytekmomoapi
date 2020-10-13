@@ -15,12 +15,20 @@ except ImportError:
 with open("test_credentials.yml", "r") as f:
     creds = load(f, Loader=Loader)
 
+test_msisdns = {
+    "failed": "46733123450",
+    "rejected": "46733123451",
+    "timeout": "46733123452",
+    "ongoing": "46733123453",
+    "pending": "46733123454",
+}
+
 dtransfer_obj = tekmomoapi.get_disbursement_transfer_obj(
     amount="100",
     currency="EUR",
     externalId=get_random_uuid_str(),
     payee=tekmomoapi.get_disbursement_party_obj(
-        "msisdn", "22997108557"
+        "msisdn", test_msisdns.get("failed")
     ),  # .to_jsonable(),
     payerMessage="Disbursement Transfer Message Here",
     payeeNote="Payee Business Note Here",
@@ -30,7 +38,7 @@ transfer_obj = tekmomoapi.get_remittance_transfer_obj(
     currency="EUR",
     externalId=get_random_uuid_str(),
     payee=tekmomoapi.get_remittance_party_obj(
-        "msisdn", "22997108557"
+        "msisdn", test_msisdns.get("pending")
     ),  # .to_jsonable(),
     payerMessage="Remittance Transfer Message Here",
     payeeNote="Payee Business Note Here",
@@ -54,7 +62,6 @@ duser = tekmomoapi.get_user_id_and_api_key(
 print(duser)
 print()
 
-
 user = {
     "user_id": "891a3dcc-f5cf-44ec-b6fe-3f74fe560add",
     "apiKey": "555a5fc2893d4091bfcce301362f1d82",
@@ -72,7 +79,7 @@ DisAPI = tekmomoapi.DisbursementAPI(
 )
 
 try:
-    tmsisdn = "22997108557"
+    tmsisdn = test_msisdns.get("failed")
     # print(f"DisAPI.basic_auth_str: {DisAPI.basic_auth_str}")
     # print(f"DisAPI.bearer_auth_str: {DisAPI.bearer_auth_str}")
     print(
@@ -84,7 +91,7 @@ except Exception as e:
     print()
     pass
 try:
-    tmsisdn = "22997108557"
+    tmsisdn = test_msisdns.get("failed")
     print(
         f"DisAPI.is_account_active: {DisAPI.is_account_active(tmsisdn, 'msisdn', 'sandbox')}"
     )
@@ -190,7 +197,7 @@ except Exception as e:
 try:
     tmsisdn = "22997108557"
     print(
-        f"ColAPI.check_account_status: {ColAPI.is_account_active(tmsisdn, 'msisdn', 'sandbox')}"
+        f"ColAPI.is_account_active: {ColAPI.is_account_active(tmsisdn, 'msisdn', 'sandbox')}"
     )
     print()
 except Exception as e:
