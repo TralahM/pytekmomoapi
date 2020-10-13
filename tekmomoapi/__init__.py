@@ -21,6 +21,14 @@ from .utils import get_authorization_str, get_random_uuid_str
 
 SANDBOX_BASE_URL = "https://sandbox.momodeveloper.mtn.com"
 
+TEST_MSISDNS = {
+    "failed": "46733123450",
+    "rejected": "46733123451",
+    "timeout": "46733123452",
+    "ongoing": "46733123453",
+    "pending": "46733123454",
+}
+
 
 def get_user_id_and_api_key(
     subscriptionKey: str, base_url: str = SANDBOX_BASE_URL
@@ -61,4 +69,5 @@ __all__ = [
     "CParty",
     "scaffold",
     "SANDBOX_BASE_URL",
+    "TEST_MSISDNS",
 ]

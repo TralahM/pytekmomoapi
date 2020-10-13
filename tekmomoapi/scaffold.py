@@ -29,6 +29,7 @@ from .utils import get_authorization_str, get_random_uuid_str
 SANDBOX_BASE_URL = "https://sandbox.momodeveloper.mtn.com"
 __all__ = [
     "get_sandbox_test_args",
+    "BaseAPI",
     "RemittanceAPI",
     "DisbursementAPI",
     "CollectionAPI",
@@ -214,9 +215,9 @@ class BaseAPI:
         Get the balance of the account.
 
         :param x_target_environment: The identifier of the EWP system where the transaction shall be processed.
-        This parameter is used to route the request to the EWP system that will initiate the transaction.
+            This parameter is used to route the request to the EWP system that will initiate the transaction.
 
-        :return: Balance obj.
+        :returns: Balance obj.
         """
         balance = self.remote_caller.get_v1_0_account_balance(
             self.subscription_key,
@@ -245,9 +246,9 @@ class BaseAPI:
             Allowed values [msisdn, email, party_code].
             <br> accountHolderId should explicitly be in small letters.
         :param x_target_environment: The identifier of the EWP system where the transaction shall be processed.
-        This parameter is used to route the request to the EWP system that will initiate the transaction.
+            This parameter is used to route the request to the EWP system that will initiate the transaction.
 
-        :return: True if account holder is registered and active,
+        :returns: True if account holder is registered and active,
             False if the account holder is not active or not found
         """
         accresult = self.remote_caller.get_v1_0_accountholder_accountholderidtype_accountholderid_active(
