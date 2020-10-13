@@ -1,0 +1,7 @@
+recursive-include tekmomoapi
+recursive-include docs
+include LICENSE
+include readthedocs.yml
+include *.md
+include *.rst
+
