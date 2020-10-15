@@ -3,6 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   Getting Started <contents.rst>
+   API Reference <api.rst>
+
+
+.. role:: pycode(code)
+   :language: python
+
 pytekmomoapi Documentation!
 ========================================
 An Opinionated Python SDK for the for the MTN Mobile Money API.
@@ -32,17 +43,6 @@ Getting Started
 
 Read the `MoMo API Documentation <https://momodeveloper.mtn.com/api-documentation/>` for
 more details.
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   Getting Started <contents.rst>
-   API Reference <api.rst>
-
-
-.. role:: pycode(code)
-   :language: python
 
 Indices and tables
 ==================
