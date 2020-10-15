@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    Getting Started <contents.rst>
