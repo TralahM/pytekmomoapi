@@ -57,7 +57,9 @@ class TokenPost200ApplicationJsonResponse:
         return token_post200_application_json_response_to_jsonable(self)
 
 
-def new_token_post200_application_json_response() -> TokenPost200ApplicationJsonResponse:
+def new_token_post200_application_json_response() -> (
+    TokenPost200ApplicationJsonResponse
+):
     """Generates an instance of TokenPost200ApplicationJsonResponse with default values."""
     return TokenPost200ApplicationJsonResponse()
 
@@ -74,7 +76,8 @@ def token_post200_application_json_response_from_obj(
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -153,7 +156,9 @@ class TokenPost401ApplicationJsonResponse:
         return token_post401_application_json_response_to_jsonable(self)
 
 
-def new_token_post401_application_json_response() -> TokenPost401ApplicationJsonResponse:
+def new_token_post401_application_json_response() -> (
+    TokenPost401ApplicationJsonResponse
+):
     """Generates an instance of TokenPost401ApplicationJsonResponse with default values."""
     return TokenPost401ApplicationJsonResponse()
 
@@ -170,7 +175,8 @@ def token_post401_application_json_response_from_obj(
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -247,7 +253,8 @@ def balance_from_obj(obj: Any, path: str = "") -> Balance:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -333,7 +340,8 @@ def party_from_obj(obj: Any, path: str = "") -> Party:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -424,7 +432,8 @@ def pre_approval_from_obj(obj: Any, path: str = "") -> PreApproval:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -550,7 +559,8 @@ def pre_approval_result_from_obj(obj: Any, path: str = "") -> PreApprovalResult:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -705,7 +715,8 @@ def request_to_pay_from_obj(obj: Any, path: str = "") -> RequestToPay:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -866,7 +877,8 @@ def request_to_pay_result_from_obj(obj: Any, path: str = "") -> RequestToPayResu
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -1056,7 +1068,8 @@ def transfer_from_obj(obj: Any, path: str = "") -> Transfer:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -1216,7 +1229,8 @@ def transfer_result_from_obj(obj: Any, path: str = "") -> TransferResult:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -1369,7 +1383,8 @@ def error_reason_from_obj(obj: Any, path: str = "") -> ErrorReason:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
@@ -1447,7 +1462,8 @@ def boolean_result_from_obj(obj: Any, path: str = "") -> BooleanResult:
     """
     if not isinstance(obj, dict):
         raise ValueError(
-            "Expected a dict at path {}, but got: {}".format(path, type(obj))
+            "Expected a dict at path {}, but got: {} {}".format(
+                path, type(obj), obj)
         )
 
     for key in obj:
